@@ -93,7 +93,7 @@ function PlasmicLinkButton__RenderFunc(props: {
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      className={classNames(defaultcss.all, projectcss.root_reset, sty.root, {
+      className={classNames(defaultcss.a, projectcss.root_reset, sty.root, {
         [sty.root__narrower]: hasVariant(variants, "narrower", "narrower"),
         [sty.root__type_outlineBlue]: hasVariant(
           variants,

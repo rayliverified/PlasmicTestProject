@@ -89,7 +89,7 @@ function PlasmicHeader__RenderFunc(props: {
       <p.PlasmicLink
         data-plasmic-name={"link"}
         data-plasmic-override={overrides.link}
-        className={classNames(defaultcss.all, sty.link)}
+        className={classNames(defaultcss.a, sty.link)}
         component={Link}
         href={"/" as const}
         platform={"nextjs"}

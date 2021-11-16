@@ -99,14 +99,7 @@ function PlasmicHome__RenderFunc(props: {
   return (
     <React.Fragment>
       <Head>
-        <title key="title">{""}</title>
-        <meta key="og:title" property="og:title" content={""} />
-        <meta
-          key="description"
-          name="description"
-          property="og:description"
-          content={""}
-        />
+        <meta name="twitter:card" content="summary" />
       </Head>
 
       <style>{`
@@ -150,7 +143,17 @@ function PlasmicHome__RenderFunc(props: {
               <Section
                 className={classNames("__wab_instance", sty.section__tYXp)}
                 subtitle={
-                  "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat."
+                  <div
+                    className={classNames(
+                      defaultcss.all,
+                      defaultcss.__wab_text,
+                      sty.text__ujnsJ
+                    )}
+                  >
+                    {
+                      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat."
+                    }
+                  </div>
                 }
                 title={"Explore the solutions"}
               />

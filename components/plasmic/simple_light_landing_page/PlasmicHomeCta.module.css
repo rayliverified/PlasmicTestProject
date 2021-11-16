@@ -47,6 +47,11 @@
     min-width: 0;
   }
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__bNz7 > :global(.__wab_flex-container) {
+    min-width: 0;
+  }
+}
 .text__xQgaK {
   position: relative;
   color: rgb(255, 255, 255) /* plasmic-token: dWEfBrDdv8Y_ */;

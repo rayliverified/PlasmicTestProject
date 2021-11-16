@@ -116,7 +116,7 @@ function PlasmicFooter__RenderFunc(props: {
           <div className={classNames(defaultcss.all, sty.freeBox___8SwUk)}>
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link__bUkHu
               )}
@@ -139,7 +139,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link__dhNor
               )}
@@ -174,7 +174,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link___3PfdI
               )}
@@ -187,7 +187,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link__fsq5V
               )}
@@ -200,7 +200,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link__ix74N
               )}
@@ -213,7 +213,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link___7LoLy
               )}
@@ -226,7 +226,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link__iqRhT
               )}
@@ -255,7 +255,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link__zXlVl
               )}
@@ -268,7 +268,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link___7WD4F
               )}
@@ -281,7 +281,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link__qd7V8
               )}
@@ -294,7 +294,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link___4HUsY
               )}
@@ -307,7 +307,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link__qWbGd
               )}
@@ -336,7 +336,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link__lbQt3
               )}
@@ -349,7 +349,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link__ya9Y
               )}
@@ -362,7 +362,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link__lXeZz
               )}
@@ -375,7 +375,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link__sCbry
               )}
@@ -388,7 +388,7 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.all,
+                defaultcss.a,
                 defaultcss.__wab_text,
                 sty.link__kmY1D
               )}
@@ -463,7 +463,7 @@ function PlasmicFooter__RenderFunc(props: {
         <div className={classNames(defaultcss.all, sty.freeBox__ktqOp)}>
           <p.PlasmicLink
             className={classNames(
-              defaultcss.all,
+              defaultcss.a,
               defaultcss.__wab_text,
               sty.link__yuVn
             )}
@@ -476,7 +476,7 @@ function PlasmicFooter__RenderFunc(props: {
 
           <p.PlasmicLink
             className={classNames(
-              defaultcss.all,
+              defaultcss.a,
               defaultcss.__wab_text,
               sty.link__vxz0V
             )}

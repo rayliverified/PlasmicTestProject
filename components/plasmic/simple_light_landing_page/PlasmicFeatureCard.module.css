@@ -25,11 +25,10 @@
   margin-top: 10px;
 }
 .root__long {
-  height: auto;
-  width: 100%;
+  height: 161px;
+  width: 357px;
   display: flex;
   flex-direction: row;
-  min-width: 0;
 }
 .root__long > :global(.__wab_flex-container) {
   flex-direction: row;
@@ -123,8 +122,8 @@
   justify-content: flex-start;
 }
 .freeBox__long__rmW5U5Vyfg {
-  width: 32px;
-  height: 32px;
+  width: 61px;
+  height: 60px;
   overflow: hidden;
   justify-content: center;
   align-items: center;

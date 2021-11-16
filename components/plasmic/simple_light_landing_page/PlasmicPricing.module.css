@@ -31,6 +31,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  min-width: 0;
   margin-top: calc(0px - 64px);
   height: calc(100% + 64px);
 }
