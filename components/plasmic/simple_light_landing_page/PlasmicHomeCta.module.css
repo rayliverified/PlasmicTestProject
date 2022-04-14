@@ -5,7 +5,7 @@
   position: relative;
   justify-content: space-between;
   max-height: 420px;
-  background: rgb(24, 25, 26);
+  background: var(--token-dph1wZ7NjV9);
   min-width: 0;
   border-radius: 5px;
 }
@@ -18,16 +18,16 @@
   }
 }
 .freeBox__bNz7 {
+  flex-direction: column;
   display: flex;
   position: relative;
-  flex-direction: column;
   width: 60%;
   padding: 32px 48px;
 }
 .freeBox__bNz7 > :global(.__wab_flex-container) {
   flex-direction: column;
-  align-items: stretch;
   justify-content: center;
+  align-items: stretch;
   margin-top: calc(0px - 16px);
   height: calc(100% + 16px);
 }
@@ -54,24 +54,24 @@
 }
 .text__xQgaK {
   position: relative;
-  color: rgb(255, 255, 255) /* plasmic-token: dWEfBrDdv8Y_ */;
+  color: var(--token-dWEfBrDdv8Y_);
   font-size: 24px;
   font-weight: 700;
   line-height: 1;
 }
 .text__wrr2V {
   position: relative;
-  color: rgb(176, 179, 184) /* plasmic-token: TRf5pfsHwLE */;
+  color: var(--token-TRf5pfsHwLE);
 }
 .freeBox___2IfkD {
+  flex-direction: row;
   display: flex;
   position: relative;
-  flex-direction: row;
 }
 .freeBox___2IfkD > :global(.__wab_flex-container) {
   flex-direction: row;
-  align-items: stretch;
   justify-content: flex-start;
+  align-items: stretch;
   margin-left: calc(0px - 8px);
   width: calc(100% + 8px);
 }
@@ -114,20 +114,20 @@
     margin-top: 8px;
   }
 }
-.textbox {
+.textInput {
   position: relative;
   width: 240px;
-  color: rgb(255, 255, 255) /* plasmic-token: dWEfBrDdv8Y_ */;
+  color: var(--token-dWEfBrDdv8Y_);
   padding-left: 10px;
   padding-right: 10px;
   height: 44px;
-  background: rgb(50, 52, 54);
+  background: var(--token-T5L5Js4u0Cm);
   flex-shrink: 0;
   border-radius: 3px;
-  border: 1px solid rgb(74, 76, 79) /* plasmic-token: QQdIvJFj1 */;
+  border: 1px solid var(--token-QQdIvJFj1);
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .textbox {
+  .textInput {
     width: 100%;
     min-width: 0;
   }
@@ -137,7 +137,7 @@
 }
 .text__oUJo8 {
   position: relative;
-  color: rgb(101, 103, 107) /* plasmic-token: vaTuh5tFL3B */;
+  color: var(--token-vaTuh5tFL3B);
   font-size: 14px;
 }
 .freeBox__vhqTe {

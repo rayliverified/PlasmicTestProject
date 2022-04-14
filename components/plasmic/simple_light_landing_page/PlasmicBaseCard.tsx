@@ -16,6 +16,7 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 
 import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
 
 import {
   hasVariant,
@@ -35,9 +36,10 @@ import {
 } from "@plasmicapp/react-web";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
-import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
-import * as projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
-import * as sty from "./PlasmicBaseCard.module.css"; // plasmic-import: DlcJ2nDkANPd/css
+
+import plasmic_library_plasmic_color_type_css from "../library_plasmic_color_type/plasmic_library_plasmic_color_type.module.css"; // plasmic-import: seaQhLVS4bbjiGvJJrRwyL/projectcss
+import projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
+import sty from "./PlasmicBaseCard.module.css"; // plasmic-import: DlcJ2nDkANPd/css
 
 export type PlasmicBaseCard__VariantMembers = {
   long: "long";
@@ -76,10 +78,11 @@ function PlasmicBaseCard__RenderFunc(props: {
   variants: PlasmicBaseCard__VariantsArgs;
   args: PlasmicBaseCard__ArgsType;
   overrides: PlasmicBaseCard__OverridesType;
-  dataFetches?: PlasmicBaseCard__Fetches;
+
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode, dataFetches } = props;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   return (
     <p.Stack
@@ -89,13 +92,20 @@ function PlasmicBaseCard__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       hasGap={true}
-      className={classNames(defaultcss.all, projectcss.root_reset, sty.root, {
-        [sty.root__long]: hasVariant(variants, "long", "long")
-      })}
+      className={classNames(
+        projectcss.all,
+        projectcss.root_reset,
+        projectcss.plasmic_default_styles,
+        projectcss.plasmic_mixins,
+        projectcss.plasmic_tokens,
+        plasmic_library_plasmic_color_type_css.plasmic_tokens,
+        sty.root,
+        { [sty.rootlong]: hasVariant(variants, "long", "long") }
+      )}
     >
       <div
-        className={classNames(defaultcss.all, sty.freeBox__bOBu, {
-          [sty.freeBox__long__bOBu5Hex]: hasVariant(variants, "long", "long")
+        className={classNames(projectcss.all, sty.freeBox__bOBu, {
+          [sty.freeBoxlong__bOBu5Hex]: hasVariant(variants, "long", "long")
         })}
       >
         {p.renderPlasmicSlot({
@@ -103,21 +113,21 @@ function PlasmicBaseCard__RenderFunc(props: {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           value: args.children,
           className: classNames(sty.slotTargetChildren, {
-            [sty.slotTargetChildren__long]: hasVariant(variants, "long", "long")
+            [sty.slotTargetChildrenlong]: hasVariant(variants, "long", "long")
           })
         })}
       </div>
 
       {(hasVariant(variants, "long", "long") ? true : false) ? (
         <div
-          className={classNames(defaultcss.all, sty.freeBox__uKhRx, {
-            [sty.freeBox__long__uKhRx5Hex]: hasVariant(variants, "long", "long")
+          className={classNames(projectcss.all, sty.freeBox__uKhRx, {
+            [sty.freeBoxlong__uKhRx5Hex]: hasVariant(variants, "long", "long")
           })}
         >
           {p.renderPlasmicSlot({
             defaultContents: (
               <svg
-                className={classNames(defaultcss.all, sty.svg__rjQlq)}
+                className={classNames(projectcss.all, sty.svg__rjQlq)}
                 role={"img"}
               />
             ),
@@ -151,7 +161,6 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicBaseCard__VariantsArgs;
     args?: PlasmicBaseCard__ArgsType;
     overrides?: NodeOverridesType<T>;
-    dataFetches?: PlasmicBaseCard__Fetches;
   } & Omit<PlasmicBaseCard__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
     Omit<PlasmicBaseCard__ArgsType, ReservedPropsType> &
@@ -178,13 +187,10 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       internalVariantPropNames: PlasmicBaseCard__VariantProps
     });
 
-    const { dataFetches } = props;
-
     return PlasmicBaseCard__RenderFunc({
       variants,
       args,
       overrides,
-      dataFetches,
       forNode: nodeName
     });
   };

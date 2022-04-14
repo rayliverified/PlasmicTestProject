@@ -16,6 +16,7 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 
 import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
 
 import {
   hasVariant,
@@ -35,9 +36,10 @@ import {
 } from "@plasmicapp/react-web";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
-import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
-import * as projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
-import * as sty from "./PlasmicAvatar.module.css"; // plasmic-import: w6naBfCt2sqX/css
+
+import plasmic_library_plasmic_color_type_css from "../library_plasmic_color_type/plasmic_library_plasmic_color_type.module.css"; // plasmic-import: seaQhLVS4bbjiGvJJrRwyL/projectcss
+import projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
+import sty from "./PlasmicAvatar.module.css"; // plasmic-import: w6naBfCt2sqX/css
 
 export type PlasmicAvatar__VariantMembers = {};
 
@@ -65,10 +67,11 @@ function PlasmicAvatar__RenderFunc(props: {
   variants: PlasmicAvatar__VariantsArgs;
   args: PlasmicAvatar__ArgsType;
   overrides: PlasmicAvatar__OverridesType;
-  dataFetches?: PlasmicAvatar__Fetches;
+
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode, dataFetches } = props;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   return (
     <div
@@ -76,13 +79,25 @@ function PlasmicAvatar__RenderFunc(props: {
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      className={classNames(defaultcss.all, projectcss.root_reset, sty.root)}
+      className={classNames(
+        projectcss.all,
+        projectcss.root_reset,
+        projectcss.plasmic_default_styles,
+        projectcss.plasmic_mixins,
+        projectcss.plasmic_tokens,
+        plasmic_library_plasmic_color_type_css.plasmic_tokens,
+        sty.root
+      )}
     >
       {p.renderPlasmicSlot({
         defaultContents: (
           <img
             alt={""}
-            className={classNames(defaultcss.img, sty.img__iNiD)}
+            className={classNames(
+              projectcss.all,
+              projectcss.img,
+              sty.img__iNiD
+            )}
             src={"/plasmic/simple_light_landing_page/images/profilepic.png"}
           />
         ),
@@ -114,7 +129,6 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicAvatar__VariantsArgs;
     args?: PlasmicAvatar__ArgsType;
     overrides?: NodeOverridesType<T>;
-    dataFetches?: PlasmicAvatar__Fetches;
   } & Omit<PlasmicAvatar__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
     Omit<PlasmicAvatar__ArgsType, ReservedPropsType> &
@@ -141,13 +155,10 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       internalVariantPropNames: PlasmicAvatar__VariantProps
     });
 
-    const { dataFetches } = props;
-
     return PlasmicAvatar__RenderFunc({
       variants,
       args,
       overrides,
-      dataFetches,
       forNode: nodeName
     });
   };

@@ -32,7 +32,7 @@
       "codeComponents": [],
       "projectApiToken": "nPw276qGsy9kISQCHrcRrsj3Y9Yva9TMyYKNUpoOMOHgRj1A51qOC6LMB2185QlA52K87n32oQJHSi5be9w",
       "indirect": false,
-      "jsBundleThemes": []
+      "globalContextsFilePath": ""
     },
     {
       "projectId": "pe9Zx7A91nx77QMfLiKwD",
@@ -388,7 +388,8 @@
       ],
       "codeComponents": [],
       "projectApiToken": "sNMqJdUW08K9fo66tC7CJ3T07J7HxdPKcMeMHHN63acGr2xgvXsq7bSGAg8CdYHNaIPDpKdOLPdwL0Lw",
-      "indirect": false
+      "indirect": false,
+      "globalContextsFilePath": ""
     }
   ],
   "globalVariants": {
@@ -401,9 +402,10 @@
       }
     ]
   },
+  "wrapPagesWithGlobalContexts": true,
   "nextjsConfig": {
     "pagesDir": "../pages"
   },
-  "cliVersion": "0.1.166",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.166/dist/plasmic.schema.json"
+  "cliVersion": "0.1.176",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.176/dist/plasmic.schema.json"
 }

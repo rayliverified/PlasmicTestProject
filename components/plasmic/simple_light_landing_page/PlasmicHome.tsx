@@ -16,6 +16,7 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 
 import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
 
 import {
   hasVariant,
@@ -41,12 +42,13 @@ import Testimonial from "../../Testimonial"; // plasmic-import: ypmftvh6VAti/com
 import HomeCta from "../../HomeCta"; // plasmic-import: mChVE37Qy1f/component
 import Footer from "../../Footer"; // plasmic-import: BFEvheJ68r2/component
 
-import { useScreenVariants } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: wMElkBnuSBnk/globalVariant
+import { useScreenVariants as useScreenVariantswMElkBnuSBnk } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: wMElkBnuSBnk/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
-import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
-import * as projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
-import * as sty from "./PlasmicHome.module.css"; // plasmic-import: zlHPe3CP2d8/css
+
+import plasmic_library_plasmic_color_type_css from "../library_plasmic_color_type/plasmic_library_plasmic_color_type.module.css"; // plasmic-import: seaQhLVS4bbjiGvJJrRwyL/projectcss
+import projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
+import sty from "./PlasmicHome.module.css"; // plasmic-import: zlHPe3CP2d8/css
 
 import LightningIcon from "./icons/PlasmicIcon__Lightning"; // plasmic-import: X5hGqJai_jfn/icon
 import HammerIcon from "./icons/PlasmicIcon__Hammer"; // plasmic-import: H8j8mjfhuvgG/icon
@@ -79,28 +81,25 @@ export type PlasmicHome__OverridesType = {
   footer?: p.Flex<typeof Footer>;
 };
 
-export interface DefaultHomeProps {
-  dataFetches: PlasmicHome__Fetches;
-}
+export interface DefaultHomeProps {}
 
 function PlasmicHome__RenderFunc(props: {
   variants: PlasmicHome__VariantsArgs;
   args: PlasmicHome__ArgsType;
   overrides: PlasmicHome__OverridesType;
-  dataFetches?: PlasmicHome__Fetches;
+
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode, dataFetches } = props;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariants()
+    screen: useScreenVariantswMElkBnuSBnk()
   });
 
   return (
     <React.Fragment>
-      <Head>
-        <meta name="twitter:card" content="summary" />
-      </Head>
+      {}
 
       <style>{`
         body {
@@ -108,7 +107,7 @@ function PlasmicHome__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={defaultcss.plasmic_page_wrapper}>
+      <div className={projectcss.plasmic_page_wrapper}>
         <p.Stack
           as={"div"}
           data-plasmic-name={"root"}
@@ -117,16 +116,20 @@ function PlasmicHome__RenderFunc(props: {
           data-plasmic-for-node={forNode}
           hasGap={true}
           className={classNames(
-            defaultcss.all,
+            projectcss.all,
             projectcss.root_reset,
+            projectcss.plasmic_default_styles,
+            projectcss.plasmic_mixins,
+            projectcss.plasmic_tokens,
+            plasmic_library_plasmic_color_type_css.plasmic_tokens,
             sty.root
           )}
         >
-          <div className={classNames(defaultcss.all, sty.freeBox___64XBh)}>
+          <div className={classNames(projectcss.all, sty.freeBox___64XBh)}>
             <p.Stack
               as={"div"}
               hasGap={true}
-              className={classNames(defaultcss.all, sty.freeBox__liJig)}
+              className={classNames(projectcss.all, sty.freeBox__liJig)}
             >
               <Header
                 data-plasmic-name={"header"}
@@ -145,8 +148,8 @@ function PlasmicHome__RenderFunc(props: {
                 subtitle={
                   <div
                     className={classNames(
-                      defaultcss.all,
-                      defaultcss.__wab_text,
+                      projectcss.all,
+                      projectcss.__wab_text,
                       sty.text__ujnsJ
                     )}
                   >
@@ -161,17 +164,17 @@ function PlasmicHome__RenderFunc(props: {
               <p.Stack
                 as={"div"}
                 hasGap={true}
-                className={classNames(defaultcss.all, sty.freeBox___5JFq4)}
+                className={classNames(projectcss.all, sty.freeBox___5JFq4)}
               >
                 <p.Stack
                   as={"div"}
                   hasGap={true}
-                  className={classNames(defaultcss.all, sty.freeBox__yVbHh)}
+                  className={classNames(projectcss.all, sty.freeBox__yVbHh)}
                 >
                   <div
                     className={classNames(
-                      defaultcss.all,
-                      defaultcss.__wab_text,
+                      projectcss.all,
+                      projectcss.__wab_text,
                       sty.text__iAotx
                     )}
                   >
@@ -180,8 +183,8 @@ function PlasmicHome__RenderFunc(props: {
 
                   <div
                     className={classNames(
-                      defaultcss.all,
-                      defaultcss.__wab_text,
+                      projectcss.all,
+                      projectcss.__wab_text,
                       sty.text__nPmc1
                     )}
                   >
@@ -200,11 +203,11 @@ function PlasmicHome__RenderFunc(props: {
                     }
                     iconBack={
                       <LightningIcon
-                        className={classNames(defaultcss.all, sty.svg__eG21C)}
+                        className={classNames(projectcss.all, sty.svg__eG21C)}
                         role={"img"}
                       />
                     }
-                    long={"long" as const}
+                    long={true}
                     title={"Building the Simple ecosystem"}
                   />
 
@@ -218,11 +221,11 @@ function PlasmicHome__RenderFunc(props: {
                     }
                     iconBack={
                       <HammerIcon
-                        className={classNames(defaultcss.all, sty.svg__sEOo8)}
+                        className={classNames(projectcss.all, sty.svg__sEOo8)}
                         role={"img"}
                       />
                     }
-                    long={"long" as const}
+                    long={true}
                     title={"Building the Simple Ecosystem"}
                   />
 
@@ -236,19 +239,23 @@ function PlasmicHome__RenderFunc(props: {
                     }
                     iconBack={
                       <PencilIcon
-                        className={classNames(defaultcss.all, sty.svg__mNCny)}
+                        className={classNames(projectcss.all, sty.svg__mNCny)}
                         role={"img"}
                       />
                     }
-                    long={"long" as const}
+                    long={true}
                     title={"Building the Simple Ecosystem"}
                   />
                 </p.Stack>
 
-                <div className={classNames(defaultcss.all, sty.freeBox__mnQt7)}>
+                <div className={classNames(projectcss.all, sty.freeBox__mnQt7)}>
                   <img
                     alt={""}
-                    className={classNames(defaultcss.img, sty.img__ymd8A)}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.img,
+                      sty.img__ymd8A
+                    )}
                     src={
                       "/plasmic/simple_light_landing_page/images/simpleProject.png"
                     }
@@ -256,7 +263,11 @@ function PlasmicHome__RenderFunc(props: {
 
                   <img
                     alt={""}
-                    className={classNames(defaultcss.img, sty.img__pLcjb)}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.img,
+                      sty.img__pLcjb
+                    )}
                     src={"/plasmic/simple_light_landing_page/images/task.png"}
                   />
                 </div>
@@ -264,11 +275,11 @@ function PlasmicHome__RenderFunc(props: {
             </p.Stack>
           </div>
 
-          <div className={classNames(defaultcss.all, sty.freeBox__udHud)}>
-            <div className={classNames(defaultcss.all, sty.freeBox__gaz73)} />
+          <div className={classNames(projectcss.all, sty.freeBox__udHud)}>
+            <div className={classNames(projectcss.all, sty.freeBox__gaz73)} />
 
-            <div className={classNames(defaultcss.all, sty.freeBox__oW8TR)}>
-              <div className={classNames(defaultcss.all, sty.freeBox__hqFOl)}>
+            <div className={classNames(projectcss.all, sty.freeBox__oW8TR)}>
+              <div className={classNames(projectcss.all, sty.freeBox__hqFOl)}>
                 <Section
                   className={classNames("__wab_instance", sty.section__z5Az)}
                   subtitle={
@@ -280,7 +291,7 @@ function PlasmicHome__RenderFunc(props: {
                 <p.Stack
                   as={"div"}
                   hasGap={true}
-                  className={classNames(defaultcss.all, sty.freeBox__g1It1)}
+                  className={classNames(projectcss.all, sty.freeBox__g1It1)}
                 >
                   <FeatureCard
                     className={classNames(
@@ -292,7 +303,7 @@ function PlasmicHome__RenderFunc(props: {
                     }
                     iconFront={
                       <SwapIcon
-                        className={classNames(defaultcss.all, sty.svg__aXyr3)}
+                        className={classNames(projectcss.all, sty.svg__aXyr3)}
                         role={"img"}
                       />
                     }
@@ -309,7 +320,7 @@ function PlasmicHome__RenderFunc(props: {
                     }
                     iconFront={
                       <SlotIcon
-                        className={classNames(defaultcss.all, sty.svg__mo5Bo)}
+                        className={classNames(projectcss.all, sty.svg__mo5Bo)}
                         role={"img"}
                       />
                     }
@@ -326,7 +337,7 @@ function PlasmicHome__RenderFunc(props: {
                     }
                     iconFront={
                       <CycleIcon
-                        className={classNames(defaultcss.all, sty.svg__somww)}
+                        className={classNames(projectcss.all, sty.svg__somww)}
                         role={"img"}
                       />
                     }
@@ -343,7 +354,7 @@ function PlasmicHome__RenderFunc(props: {
                     }
                     iconFront={
                       <HammerIcon
-                        className={classNames(defaultcss.all, sty.svg__gagNo)}
+                        className={classNames(projectcss.all, sty.svg__gagNo)}
                         role={"img"}
                       />
                     }
@@ -360,7 +371,7 @@ function PlasmicHome__RenderFunc(props: {
                     }
                     iconFront={
                       <PencilIcon
-                        className={classNames(defaultcss.all, sty.svg__mrg7K)}
+                        className={classNames(projectcss.all, sty.svg__mrg7K)}
                         role={"img"}
                       />
                     }
@@ -377,7 +388,7 @@ function PlasmicHome__RenderFunc(props: {
                     }
                     iconFront={
                       <LightningIcon
-                        className={classNames(defaultcss.all, sty.svg___8UaFt)}
+                        className={classNames(projectcss.all, sty.svg___8UaFt)}
                         role={"img"}
                       />
                     }
@@ -387,14 +398,14 @@ function PlasmicHome__RenderFunc(props: {
               </div>
             </div>
 
-            <div className={classNames(defaultcss.all, sty.freeBox___0WxZx)} />
+            <div className={classNames(projectcss.all, sty.freeBox___0WxZx)} />
           </div>
 
-          <div className={classNames(defaultcss.all, sty.freeBox__qyn66)}>
+          <div className={classNames(projectcss.all, sty.freeBox__qyn66)}>
             <p.Stack
               as={"div"}
               hasGap={true}
-              className={classNames(defaultcss.all, sty.freeBox__tnlp)}
+              className={classNames(projectcss.all, sty.freeBox__tnlp)}
             >
               <Section
                 className={classNames("__wab_instance", sty.section__o2Toa)}
@@ -406,30 +417,30 @@ function PlasmicHome__RenderFunc(props: {
               <p.Stack
                 as={"div"}
                 hasGap={true}
-                className={classNames(defaultcss.all, sty.freeBox__mm5La)}
+                className={classNames(projectcss.all, sty.freeBox__mm5La)}
               >
                 <FacebookLogoIcon
-                  className={classNames(defaultcss.all, sty.svg__uic95)}
+                  className={classNames(projectcss.all, sty.svg__uic95)}
                   role={"img"}
                 />
 
                 <TinderLogoIcon
-                  className={classNames(defaultcss.all, sty.svg__z0Wcr)}
+                  className={classNames(projectcss.all, sty.svg__z0Wcr)}
                   role={"img"}
                 />
 
                 <AirbnbLogoIcon
-                  className={classNames(defaultcss.all, sty.svg__uedu7)}
+                  className={classNames(projectcss.all, sty.svg__uedu7)}
                   role={"img"}
                 />
 
                 <HubspotLogoIcon
-                  className={classNames(defaultcss.all, sty.svg__fjEv)}
+                  className={classNames(projectcss.all, sty.svg__fjEv)}
                   role={"img"}
                 />
 
                 <AmazonLogoIcon
-                  className={classNames(defaultcss.all, sty.svg__qdtNf)}
+                  className={classNames(projectcss.all, sty.svg__qdtNf)}
                   role={"img"}
                 />
               </p.Stack>
@@ -490,7 +501,6 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicHome__VariantsArgs;
     args?: PlasmicHome__ArgsType;
     overrides?: NodeOverridesType<T>;
-    dataFetches?: PlasmicHome__Fetches;
   } & Omit<PlasmicHome__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
     Omit<PlasmicHome__ArgsType, ReservedPropsType> &
@@ -517,13 +527,10 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       internalVariantPropNames: PlasmicHome__VariantProps
     });
 
-    const { dataFetches } = props;
-
     return PlasmicHome__RenderFunc({
       variants,
       args,
       overrides,
-      dataFetches,
       forNode: nodeName
     });
   };

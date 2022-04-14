@@ -462,10 +462,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@plasmicapp/cli@^0.1.166":
-  version "0.1.166"
-  resolved "https://registry.yarnpkg.com/@plasmicapp/cli/-/cli-0.1.166.tgz#be7c0a0e68c8d31ab175e0c10689b3bca0a558ab"
-  integrity sha512-pm/9vZtsW2UylGatPfRESKuRhlLpe5SQPiOHDtufHJfHOYmUJrNhuIEtI+IWzuxF118GlZVcY9Ofd52qpgAgxA==
+"@plasmicapp/cli@^0.1.176":
+  version "0.1.176"
+  resolved "https://registry.yarnpkg.com/@plasmicapp/cli/-/cli-0.1.176.tgz#58af7f0cc89dc9813b538082fc89ac5364997f3f"
+  integrity sha512-NOOkTonqOG6X+bAhKLZ7R270VDOmTCzOJq1D4vG4/sy4vowWQwVqaYqZ50/UlEdLh2FJgLI6LKPT8y15CTfYPw==
   dependencies:
     "@babel/core" "^7.12.3"
     "@babel/generator" "^7.12.1"
@@ -517,10 +517,10 @@
     lodash "^4.17.19"
     prettier "^2.0.5"
 
-"@plasmicapp/react-web@^0.2.90":
-  version "0.2.90"
-  resolved "https://registry.yarnpkg.com/@plasmicapp/react-web/-/react-web-0.2.90.tgz#5bb410ce91ab0f47b8c770f082ba0f60c29078ee"
-  integrity sha512-dFnslQ4tpvTl8qS+yab7SYIYBN+hE95PIjEJdRkagNnAIzFNFPeqzX9Nv5qFiDxJ6CBn/Po1InbkIMXqg88Wjw==
+"@plasmicapp/react-web@^0.2.93":
+  version "0.2.93"
+  resolved "https://registry.yarnpkg.com/@plasmicapp/react-web/-/react-web-0.2.93.tgz#7edf3553faf2623148cccdcf5c0fb8540394d4c0"
+  integrity sha512-ny5BK37XhB/wBvOpa9tkRNPkoaAOyZ27t6laVto9nGJ+YqPY1M2Z88iMBJi13cvVTVK+1lQtQEWwJEnzvSCUoA==
   dependencies:
     classnames "^2.2.6"
     react-aria "^3.7.0"

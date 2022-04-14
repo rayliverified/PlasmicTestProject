@@ -16,6 +16,7 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 
 import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
 
 import {
   hasVariant,
@@ -40,12 +41,13 @@ import LinkButton from "../../LinkButton"; // plasmic-import: YlXOHfol-N9v/compo
 import HomeCta from "../../HomeCta"; // plasmic-import: mChVE37Qy1f/component
 import Footer from "../../Footer"; // plasmic-import: BFEvheJ68r2/component
 
-import { useScreenVariants } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: wMElkBnuSBnk/globalVariant
+import { useScreenVariants as useScreenVariantswMElkBnuSBnk } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: wMElkBnuSBnk/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
-import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
-import * as projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
-import * as sty from "./PlasmicFeatures.module.css"; // plasmic-import: 9OT7BG60TZM-/css
+
+import plasmic_library_plasmic_color_type_css from "../library_plasmic_color_type/plasmic_library_plasmic_color_type.module.css"; // plasmic-import: seaQhLVS4bbjiGvJJrRwyL/projectcss
+import projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
+import sty from "./PlasmicFeatures.module.css"; // plasmic-import: 9OT7BG60TZM-/css
 
 export type PlasmicFeatures__VariantMembers = {};
 
@@ -65,28 +67,25 @@ export type PlasmicFeatures__OverridesType = {
   footer?: p.Flex<typeof Footer>;
 };
 
-export interface DefaultFeaturesProps {
-  dataFetches: PlasmicFeatures__Fetches;
-}
+export interface DefaultFeaturesProps {}
 
 function PlasmicFeatures__RenderFunc(props: {
   variants: PlasmicFeatures__VariantsArgs;
   args: PlasmicFeatures__ArgsType;
   overrides: PlasmicFeatures__OverridesType;
-  dataFetches?: PlasmicFeatures__Fetches;
+
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode, dataFetches } = props;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariants()
+    screen: useScreenVariantswMElkBnuSBnk()
   });
 
   return (
     <React.Fragment>
-      <Head>
-        <meta name="twitter:card" content="summary" />
-      </Head>
+      {}
 
       <style>{`
         body {
@@ -94,22 +93,26 @@ function PlasmicFeatures__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={defaultcss.plasmic_page_wrapper}>
+      <div className={projectcss.plasmic_page_wrapper}>
         <div
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            defaultcss.all,
+            projectcss.all,
             projectcss.root_reset,
+            projectcss.plasmic_default_styles,
+            projectcss.plasmic_mixins,
+            projectcss.plasmic_tokens,
+            plasmic_library_plasmic_color_type_css.plasmic_tokens,
             sty.root
           )}
         >
           <p.Stack
             as={"div"}
             hasGap={true}
-            className={classNames(defaultcss.all, sty.freeBox___7RZct)}
+            className={classNames(projectcss.all, sty.freeBox___7RZct)}
           >
             <Header
               data-plasmic-name={"header"}
@@ -130,17 +133,17 @@ function PlasmicFeatures__RenderFunc(props: {
             <p.Stack
               as={"div"}
               hasGap={true}
-              className={classNames(defaultcss.all, sty.freeBox__yh0J5)}
+              className={classNames(projectcss.all, sty.freeBox__yh0J5)}
             >
               <p.Stack
                 as={"div"}
                 hasGap={true}
-                className={classNames(defaultcss.all, sty.freeBox___4XiLm)}
+                className={classNames(projectcss.all, sty.freeBox___4XiLm)}
               >
                 <div
                   className={classNames(
-                    defaultcss.all,
-                    defaultcss.__wab_text,
+                    projectcss.all,
+                    projectcss.__wab_text,
                     sty.text__oTmxQ
                   )}
                 >
@@ -149,8 +152,8 @@ function PlasmicFeatures__RenderFunc(props: {
 
                 <div
                   className={classNames(
-                    defaultcss.all,
-                    defaultcss.__wab_text,
+                    projectcss.all,
+                    projectcss.__wab_text,
                     sty.text__fFab9
                   )}
                 >
@@ -173,8 +176,8 @@ function PlasmicFeatures__RenderFunc(props: {
 
                 <div
                   className={classNames(
-                    defaultcss.all,
-                    defaultcss.__wab_text,
+                    projectcss.all,
+                    projectcss.__wab_text,
                     sty.text__kVn0V
                   )}
                 >
@@ -186,7 +189,7 @@ function PlasmicFeatures__RenderFunc(props: {
                 <p.Stack
                   as={"div"}
                   hasGap={true}
-                  className={classNames(defaultcss.all, sty.freeBox__eLgDh)}
+                  className={classNames(projectcss.all, sty.freeBox__eLgDh)}
                 >
                   <LinkButton
                     text={"Start free trial"}
@@ -200,10 +203,14 @@ function PlasmicFeatures__RenderFunc(props: {
                 </p.Stack>
               </p.Stack>
 
-              <div className={classNames(defaultcss.all, sty.freeBox__yctaS)}>
+              <div className={classNames(projectcss.all, sty.freeBox__yctaS)}>
                 <img
                   alt={""}
-                  className={classNames(defaultcss.img, sty.img__tjNkM)}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.img,
+                    sty.img__tjNkM
+                  )}
                   src={
                     "/plasmic/simple_light_landing_page/images/simpleProject.png"
                   }
@@ -211,7 +218,11 @@ function PlasmicFeatures__RenderFunc(props: {
 
                 <img
                   alt={""}
-                  className={classNames(defaultcss.img, sty.img__qXr1)}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.img,
+                    sty.img__qXr1
+                  )}
                   src={"/plasmic/simple_light_landing_page/images/task.png"}
                 />
               </div>
@@ -220,12 +231,16 @@ function PlasmicFeatures__RenderFunc(props: {
             <p.Stack
               as={"div"}
               hasGap={true}
-              className={classNames(defaultcss.all, sty.freeBox___3T8Ea)}
+              className={classNames(projectcss.all, sty.freeBox___3T8Ea)}
             >
-              <div className={classNames(defaultcss.all, sty.freeBox__wjH8Q)}>
+              <div className={classNames(projectcss.all, sty.freeBox__wjH8Q)}>
                 <img
                   alt={""}
-                  className={classNames(defaultcss.img, sty.img__g0IWz)}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.img,
+                    sty.img__g0IWz
+                  )}
                   src={
                     "/plasmic/simple_light_landing_page/images/simpleProject.png"
                   }
@@ -233,7 +248,11 @@ function PlasmicFeatures__RenderFunc(props: {
 
                 <img
                   alt={""}
-                  className={classNames(defaultcss.img, sty.img__tyYk)}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.img,
+                    sty.img__tyYk
+                  )}
                   src={"/plasmic/simple_light_landing_page/images/task.png"}
                 />
               </div>
@@ -241,12 +260,12 @@ function PlasmicFeatures__RenderFunc(props: {
               <p.Stack
                 as={"div"}
                 hasGap={true}
-                className={classNames(defaultcss.all, sty.freeBox__fcigj)}
+                className={classNames(projectcss.all, sty.freeBox__fcigj)}
               >
                 <div
                   className={classNames(
-                    defaultcss.all,
-                    defaultcss.__wab_text,
+                    projectcss.all,
+                    projectcss.__wab_text,
                     sty.text__neth2
                   )}
                 >
@@ -255,8 +274,8 @@ function PlasmicFeatures__RenderFunc(props: {
 
                 <div
                   className={classNames(
-                    defaultcss.all,
-                    defaultcss.__wab_text,
+                    projectcss.all,
+                    projectcss.__wab_text,
                     sty.text__e5Yjp
                   )}
                 >
@@ -279,8 +298,8 @@ function PlasmicFeatures__RenderFunc(props: {
 
                 <div
                   className={classNames(
-                    defaultcss.all,
-                    defaultcss.__wab_text,
+                    projectcss.all,
+                    projectcss.__wab_text,
                     sty.text__v4Nb0
                   )}
                 >
@@ -292,7 +311,7 @@ function PlasmicFeatures__RenderFunc(props: {
                 <p.Stack
                   as={"div"}
                   hasGap={true}
-                  className={classNames(defaultcss.all, sty.freeBox__tWtLa)}
+                  className={classNames(projectcss.all, sty.freeBox__tWtLa)}
                 >
                   <LinkButton
                     text={"Start free trial"}
@@ -354,7 +373,6 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicFeatures__VariantsArgs;
     args?: PlasmicFeatures__ArgsType;
     overrides?: NodeOverridesType<T>;
-    dataFetches?: PlasmicFeatures__Fetches;
   } & Omit<PlasmicFeatures__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
     Omit<PlasmicFeatures__ArgsType, ReservedPropsType> &
@@ -381,13 +399,10 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       internalVariantPropNames: PlasmicFeatures__VariantProps
     });
 
-    const { dataFetches } = props;
-
     return PlasmicFeatures__RenderFunc({
       variants,
       args,
       overrides,
-      dataFetches,
       forNode: nodeName
     });
   };

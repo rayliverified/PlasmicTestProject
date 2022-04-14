@@ -16,6 +16,7 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 
 import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
 
 import {
   hasVariant,
@@ -35,9 +36,10 @@ import {
 } from "@plasmicapp/react-web";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
-import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
-import * as projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
-import * as sty from "./PlasmicLinkButton.module.css"; // plasmic-import: YlXOHfol-N9v/css
+
+import plasmic_library_plasmic_color_type_css from "../library_plasmic_color_type/plasmic_library_plasmic_color_type.module.css"; // plasmic-import: seaQhLVS4bbjiGvJJrRwyL/projectcss
+import projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
+import sty from "./PlasmicLinkButton.module.css"; // plasmic-import: YlXOHfol-N9v/css
 
 export type PlasmicLinkButton__VariantMembers = {
   type: "solidBlue" | "solidBlack" | "outlineBlue" | "small";
@@ -57,7 +59,7 @@ export const PlasmicLinkButton__VariantProps = new Array<VariantPropType>(
 
 export type PlasmicLinkButton__ArgsType = {
   text?: React.ReactNode;
-  href?: string | PageHref;
+  href?: string;
 };
 
 type ArgPropType = keyof PlasmicLinkButton__ArgsType;
@@ -72,7 +74,7 @@ export type PlasmicLinkButton__OverridesType = {
 
 export interface DefaultLinkButtonProps {
   text?: React.ReactNode;
-  href?: string | PageHref;
+  href?: string;
   type?: SingleChoiceArg<"solidBlue" | "solidBlack" | "outlineBlue" | "small">;
   narrower?: SingleBooleanChoiceArg<"narrower">;
   className?: string;
@@ -82,10 +84,11 @@ function PlasmicLinkButton__RenderFunc(props: {
   variants: PlasmicLinkButton__VariantsArgs;
   args: PlasmicLinkButton__ArgsType;
   overrides: PlasmicLinkButton__OverridesType;
-  dataFetches?: PlasmicLinkButton__Fetches;
+
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode, dataFetches } = props;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   return (
     <p.PlasmicLink
@@ -93,17 +96,27 @@ function PlasmicLinkButton__RenderFunc(props: {
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      className={classNames(defaultcss.a, projectcss.root_reset, sty.root, {
-        [sty.root__narrower]: hasVariant(variants, "narrower", "narrower"),
-        [sty.root__type_outlineBlue]: hasVariant(
-          variants,
-          "type",
-          "outlineBlue"
-        ),
-        [sty.root__type_small]: hasVariant(variants, "type", "small"),
-        [sty.root__type_solidBlack]: hasVariant(variants, "type", "solidBlack"),
-        [sty.root__type_solidBlue]: hasVariant(variants, "type", "solidBlue")
-      })}
+      className={classNames(
+        projectcss.all,
+        projectcss.a,
+        projectcss.root_reset,
+        projectcss.plasmic_default_styles,
+        projectcss.plasmic_mixins,
+        projectcss.plasmic_tokens,
+        plasmic_library_plasmic_color_type_css.plasmic_tokens,
+        sty.root,
+        {
+          [sty.rootnarrower]: hasVariant(variants, "narrower", "narrower"),
+          [sty.roottype_outlineBlue]: hasVariant(
+            variants,
+            "type",
+            "outlineBlue"
+          ),
+          [sty.roottype_small]: hasVariant(variants, "type", "small"),
+          [sty.roottype_solidBlack]: hasVariant(variants, "type", "solidBlack"),
+          [sty.roottype_solidBlue]: hasVariant(variants, "type", "solidBlue")
+        }
+      )}
       component={Link}
       href={args.href !== undefined ? args.href : ("#" as const)}
       platform={"nextjs"}
@@ -112,17 +125,17 @@ function PlasmicLinkButton__RenderFunc(props: {
         defaultContents: "Do the thing",
         value: args.text,
         className: classNames(sty.slotTargetText, {
-          [sty.slotTargetText__type_outlineBlue]: hasVariant(
+          [sty.slotTargetTexttype_outlineBlue]: hasVariant(
             variants,
             "type",
             "outlineBlue"
           ),
-          [sty.slotTargetText__type_solidBlack]: hasVariant(
+          [sty.slotTargetTexttype_solidBlack]: hasVariant(
             variants,
             "type",
             "solidBlack"
           ),
-          [sty.slotTargetText__type_solidBlue]: hasVariant(
+          [sty.slotTargetTexttype_solidBlue]: hasVariant(
             variants,
             "type",
             "solidBlue"
@@ -154,7 +167,6 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicLinkButton__VariantsArgs;
     args?: PlasmicLinkButton__ArgsType;
     overrides?: NodeOverridesType<T>;
-    dataFetches?: PlasmicLinkButton__Fetches;
   } & Omit<PlasmicLinkButton__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
     Omit<PlasmicLinkButton__ArgsType, ReservedPropsType> &
@@ -181,13 +193,10 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       internalVariantPropNames: PlasmicLinkButton__VariantProps
     });
 
-    const { dataFetches } = props;
-
     return PlasmicLinkButton__RenderFunc({
       variants,
       args,
       overrides,
-      dataFetches,
       forNode: nodeName
     });
   };

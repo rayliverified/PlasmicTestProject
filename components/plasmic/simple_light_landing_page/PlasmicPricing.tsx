@@ -16,6 +16,7 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 
 import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
 
 import {
   hasVariant,
@@ -41,12 +42,13 @@ import LinkButton from "../../LinkButton"; // plasmic-import: YlXOHfol-N9v/compo
 import Faq from "../../Faq"; // plasmic-import: 0wrj4H0ys-px/component
 import Footer from "../../Footer"; // plasmic-import: BFEvheJ68r2/component
 
-import { useScreenVariants } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: wMElkBnuSBnk/globalVariant
+import { useScreenVariants as useScreenVariantswMElkBnuSBnk } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: wMElkBnuSBnk/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
-import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
-import * as projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
-import * as sty from "./PlasmicPricing.module.css"; // plasmic-import: 07MxpX7fjHo4/css
+
+import plasmic_library_plasmic_color_type_css from "../library_plasmic_color_type/plasmic_library_plasmic_color_type.module.css"; // plasmic-import: seaQhLVS4bbjiGvJJrRwyL/projectcss
+import projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
+import sty from "./PlasmicPricing.module.css"; // plasmic-import: 07MxpX7fjHo4/css
 
 export type PlasmicPricing__VariantMembers = {};
 
@@ -64,28 +66,25 @@ export type PlasmicPricing__OverridesType = {
   footer?: p.Flex<typeof Footer>;
 };
 
-export interface DefaultPricingProps {
-  dataFetches: PlasmicPricing__Fetches;
-}
+export interface DefaultPricingProps {}
 
 function PlasmicPricing__RenderFunc(props: {
   variants: PlasmicPricing__VariantsArgs;
   args: PlasmicPricing__ArgsType;
   overrides: PlasmicPricing__OverridesType;
-  dataFetches?: PlasmicPricing__Fetches;
+
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode, dataFetches } = props;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariants()
+    screen: useScreenVariantswMElkBnuSBnk()
   });
 
   return (
     <React.Fragment>
-      <Head>
-        <meta name="twitter:card" content="summary" />
-      </Head>
+      {}
 
       <style>{`
         body {
@@ -93,22 +92,26 @@ function PlasmicPricing__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={defaultcss.plasmic_page_wrapper}>
+      <div className={projectcss.plasmic_page_wrapper}>
         <div
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            defaultcss.all,
+            projectcss.all,
             projectcss.root_reset,
+            projectcss.plasmic_default_styles,
+            projectcss.plasmic_mixins,
+            projectcss.plasmic_tokens,
+            plasmic_library_plasmic_color_type_css.plasmic_tokens,
             sty.root
           )}
         >
           <p.Stack
             as={"div"}
             hasGap={true}
-            className={classNames(defaultcss.all, sty.freeBox___8F6L7)}
+            className={classNames(projectcss.all, sty.freeBox___8F6L7)}
           >
             <Header
               data-plasmic-name={"header"}
@@ -127,15 +130,15 @@ function PlasmicPricing__RenderFunc(props: {
             <p.Stack
               as={"div"}
               hasGap={true}
-              className={classNames(defaultcss.all, sty.freeBox__iRsyd)}
+              className={classNames(projectcss.all, sty.freeBox__iRsyd)}
             >
               <Plan
                 className={classNames("__wab_instance", sty.plan___1Kyqq)}
                 price={
                   <div
                     className={classNames(
-                      defaultcss.all,
-                      defaultcss.__wab_text,
+                      projectcss.all,
+                      projectcss.__wab_text,
                       sty.text__ha2QQ
                     )}
                   >
@@ -155,7 +158,7 @@ function PlasmicPricing__RenderFunc(props: {
                   <p.Stack
                     as={"div"}
                     hasGap={true}
-                    className={classNames(defaultcss.all, sty.freeBox__aKa7T)}
+                    className={classNames(projectcss.all, sty.freeBox__aKa7T)}
                   >
                     <Bullet
                       className={classNames(
@@ -187,8 +190,8 @@ function PlasmicPricing__RenderFunc(props: {
                 price={
                   <div
                     className={classNames(
-                      defaultcss.all,
-                      defaultcss.__wab_text,
+                      projectcss.all,
+                      projectcss.__wab_text,
                       sty.text___9JVFt
                     )}
                   >
@@ -205,8 +208,8 @@ function PlasmicPricing__RenderFunc(props: {
                 price={
                   <div
                     className={classNames(
-                      defaultcss.all,
-                      defaultcss.__wab_text,
+                      projectcss.all,
+                      projectcss.__wab_text,
                       sty.text__fsqRk
                     )}
                   >
@@ -224,8 +227,8 @@ function PlasmicPricing__RenderFunc(props: {
                 <React.Fragment>
                   <div
                     className={classNames(
-                      defaultcss.all,
-                      defaultcss.__wab_text,
+                      projectcss.all,
+                      projectcss.__wab_text,
                       sty.text___2Jnpe
                     )}
                   >
@@ -302,7 +305,6 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicPricing__VariantsArgs;
     args?: PlasmicPricing__ArgsType;
     overrides?: NodeOverridesType<T>;
-    dataFetches?: PlasmicPricing__Fetches;
   } & Omit<PlasmicPricing__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
     Omit<PlasmicPricing__ArgsType, ReservedPropsType> &
@@ -329,13 +331,10 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       internalVariantPropNames: PlasmicPricing__VariantProps
     });
 
-    const { dataFetches } = props;
-
     return PlasmicPricing__RenderFunc({
       variants,
       args,
       overrides,
-      dataFetches,
       forNode: nodeName
     });
   };

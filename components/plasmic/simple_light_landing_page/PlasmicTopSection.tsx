@@ -16,6 +16,7 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 
 import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
 
 import {
   hasVariant,
@@ -36,9 +37,10 @@ import {
 import LinkButton from "../../LinkButton"; // plasmic-import: YlXOHfol-N9v/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
-import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
-import * as projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
-import * as sty from "./PlasmicTopSection.module.css"; // plasmic-import: BFy4g_2JJp_/css
+
+import plasmic_library_plasmic_color_type_css from "../library_plasmic_color_type/plasmic_library_plasmic_color_type.module.css"; // plasmic-import: seaQhLVS4bbjiGvJJrRwyL/projectcss
+import projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
+import sty from "./PlasmicTopSection.module.css"; // plasmic-import: BFy4g_2JJp_/css
 
 export type PlasmicTopSection__VariantMembers = {};
 
@@ -63,10 +65,11 @@ function PlasmicTopSection__RenderFunc(props: {
   variants: PlasmicTopSection__VariantsArgs;
   args: PlasmicTopSection__ArgsType;
   overrides: PlasmicTopSection__OverridesType;
-  dataFetches?: PlasmicTopSection__Fetches;
+
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode, dataFetches } = props;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   return (
     <div
@@ -74,23 +77,31 @@ function PlasmicTopSection__RenderFunc(props: {
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      className={classNames(defaultcss.all, projectcss.root_reset, sty.root)}
+      className={classNames(
+        projectcss.all,
+        projectcss.root_reset,
+        projectcss.plasmic_default_styles,
+        projectcss.plasmic_mixins,
+        projectcss.plasmic_tokens,
+        plasmic_library_plasmic_color_type_css.plasmic_tokens,
+        sty.root
+      )}
     >
       <p.Stack
         as={"div"}
         hasGap={true}
-        className={classNames(defaultcss.all, sty.freeBox___7UQf)}
+        className={classNames(projectcss.all, sty.freeBox___7UQf)}
       >
         <p.Stack
           as={"div"}
           hasGap={true}
-          className={classNames(defaultcss.all, sty.freeBox__hZzAj)}
+          className={classNames(projectcss.all, sty.freeBox__hZzAj)}
         >
-          <div className={classNames(defaultcss.all, sty.freeBox__tKx7H)}>
+          <div className={classNames(projectcss.all, sty.freeBox__tKx7H)}>
             <div
               className={classNames(
-                defaultcss.all,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.__wab_text,
                 sty.text__k6CI9
               )}
             >
@@ -99,8 +110,8 @@ function PlasmicTopSection__RenderFunc(props: {
 
             <div
               className={classNames(
-                defaultcss.all,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.__wab_text,
                 sty.text__owGxl
               )}
             >
@@ -110,8 +121,8 @@ function PlasmicTopSection__RenderFunc(props: {
 
           <div
             className={classNames(
-              defaultcss.all,
-              defaultcss.__wab_text,
+              projectcss.all,
+              projectcss.__wab_text,
               sty.text__djDrh
             )}
           >
@@ -124,7 +135,7 @@ function PlasmicTopSection__RenderFunc(props: {
         <p.Stack
           as={"div"}
           hasGap={true}
-          className={classNames(defaultcss.all, sty.freeBox__x3Nr)}
+          className={classNames(projectcss.all, sty.freeBox__x3Nr)}
         >
           <LinkButton
             className={classNames("__wab_instance", sty.linkButton__fgBrP)}
@@ -139,12 +150,12 @@ function PlasmicTopSection__RenderFunc(props: {
           />
         </p.Stack>
 
-        <div className={classNames(defaultcss.all, sty.freeBox__etL6K)}>
+        <div className={classNames(projectcss.all, sty.freeBox__etL6K)}>
           <img
             data-plasmic-name={"img"}
             data-plasmic-override={overrides.img}
             alt={""}
-            className={classNames(defaultcss.img, sty.img)}
+            className={classNames(projectcss.all, projectcss.img, sty.img)}
             src={"/plasmic/simple_light_landing_page/images/heroImage.png"}
           />
         </div>
@@ -176,7 +187,6 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicTopSection__VariantsArgs;
     args?: PlasmicTopSection__ArgsType;
     overrides?: NodeOverridesType<T>;
-    dataFetches?: PlasmicTopSection__Fetches;
   } & Omit<PlasmicTopSection__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
     Omit<PlasmicTopSection__ArgsType, ReservedPropsType> &
@@ -203,13 +213,10 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       internalVariantPropNames: PlasmicTopSection__VariantProps
     });
 
-    const { dataFetches } = props;
-
     return PlasmicTopSection__RenderFunc({
       variants,
       args,
       overrides,
-      dataFetches,
       forNode: nodeName
     });
   };

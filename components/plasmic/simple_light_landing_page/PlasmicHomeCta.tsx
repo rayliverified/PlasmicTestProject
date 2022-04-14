@@ -16,6 +16,7 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 
 import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
 
 import {
   hasVariant,
@@ -35,12 +36,13 @@ import {
 } from "@plasmicapp/react-web";
 import LinkButton from "../../LinkButton"; // plasmic-import: YlXOHfol-N9v/component
 
-import { useScreenVariants } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: wMElkBnuSBnk/globalVariant
+import { useScreenVariants as useScreenVariantswMElkBnuSBnk } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: wMElkBnuSBnk/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
-import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
-import * as projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
-import * as sty from "./PlasmicHomeCta.module.css"; // plasmic-import: mChVE37Qy1f/css
+
+import plasmic_library_plasmic_color_type_css from "../library_plasmic_color_type/plasmic_library_plasmic_color_type.module.css"; // plasmic-import: seaQhLVS4bbjiGvJJrRwyL/projectcss
+import projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
+import sty from "./PlasmicHomeCta.module.css"; // plasmic-import: mChVE37Qy1f/css
 
 import SphereIcon from "./icons/PlasmicIcon__Sphere"; // plasmic-import: gek1vgOrOq2m/icon
 
@@ -56,9 +58,10 @@ export const PlasmicHomeCta__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicHomeCta__OverridesType = {
   root?: p.Flex<"div">;
-  textbox?: p.Flex<"input">;
+  textInput?: p.Flex<"input">;
   linkButton?: p.Flex<typeof LinkButton>;
   svg?: p.Flex<"svg">;
+  textbox?: p.Flex<"input">;
 };
 
 export interface DefaultHomeCtaProps {
@@ -69,13 +72,14 @@ function PlasmicHomeCta__RenderFunc(props: {
   variants: PlasmicHomeCta__VariantsArgs;
   args: PlasmicHomeCta__ArgsType;
   overrides: PlasmicHomeCta__OverridesType;
-  dataFetches?: PlasmicHomeCta__Fetches;
+
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode, dataFetches } = props;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariants()
+    screen: useScreenVariantswMElkBnuSBnk()
   });
 
   return (
@@ -84,17 +88,25 @@ function PlasmicHomeCta__RenderFunc(props: {
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      className={classNames(defaultcss.all, projectcss.root_reset, sty.root)}
+      className={classNames(
+        projectcss.all,
+        projectcss.root_reset,
+        projectcss.plasmic_default_styles,
+        projectcss.plasmic_mixins,
+        projectcss.plasmic_tokens,
+        plasmic_library_plasmic_color_type_css.plasmic_tokens,
+        sty.root
+      )}
     >
       <p.Stack
         as={"div"}
         hasGap={true}
-        className={classNames(defaultcss.all, sty.freeBox__bNz7)}
+        className={classNames(projectcss.all, sty.freeBox__bNz7)}
       >
         <div
           className={classNames(
-            defaultcss.all,
-            defaultcss.__wab_text,
+            projectcss.all,
+            projectcss.__wab_text,
             sty.text__xQgaK
           )}
         >
@@ -103,8 +115,8 @@ function PlasmicHomeCta__RenderFunc(props: {
 
         <div
           className={classNames(
-            defaultcss.all,
-            defaultcss.__wab_text,
+            projectcss.all,
+            projectcss.__wab_text,
             sty.text__wrr2V
           )}
         >
@@ -116,12 +128,16 @@ function PlasmicHomeCta__RenderFunc(props: {
         <p.Stack
           as={"div"}
           hasGap={true}
-          className={classNames(defaultcss.all, sty.freeBox___2IfkD)}
+          className={classNames(projectcss.all, sty.freeBox___2IfkD)}
         >
           <input
-            data-plasmic-name={"textbox"}
-            data-plasmic-override={overrides.textbox}
-            className={classNames(defaultcss.input, sty.textbox)}
+            data-plasmic-name={"textInput"}
+            data-plasmic-override={overrides.textInput ?? overrides.textbox}
+            className={classNames(
+              projectcss.all,
+              projectcss.input,
+              sty.textInput
+            )}
             placeholder={"Your email..." as const}
             size={1 as const}
             type={"text" as const}
@@ -139,8 +155,8 @@ function PlasmicHomeCta__RenderFunc(props: {
 
         <div
           className={classNames(
-            defaultcss.all,
-            defaultcss.__wab_text,
+            projectcss.all,
+            projectcss.__wab_text,
             sty.text__oUJo8
           )}
         >
@@ -149,11 +165,11 @@ function PlasmicHomeCta__RenderFunc(props: {
       </p.Stack>
 
       {(hasVariant(globalVariants, "screen", "mobile") ? false : true) ? (
-        <div className={classNames(defaultcss.all, sty.freeBox__vhqTe)}>
+        <div className={classNames(projectcss.all, sty.freeBox__vhqTe)}>
           <SphereIcon
             data-plasmic-name={"svg"}
             data-plasmic-override={overrides.svg}
-            className={classNames(defaultcss.all, sty.svg)}
+            className={classNames(projectcss.all, sty.svg)}
             role={"img"}
           />
         </div>
@@ -163,8 +179,8 @@ function PlasmicHomeCta__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "textbox", "linkButton", "svg"],
-  textbox: ["textbox"],
+  root: ["root", "textInput", "textbox", "linkButton", "svg"],
+  textInput: ["textInput", "textbox"],
   linkButton: ["linkButton"],
   svg: ["svg"]
 } as const;
@@ -173,7 +189,7 @@ type DescendantsType<T extends NodeNameType> =
   typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  textbox: "input";
+  textInput: "input";
   linkButton: typeof LinkButton;
   svg: "svg";
 };
@@ -189,7 +205,6 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicHomeCta__VariantsArgs;
     args?: PlasmicHomeCta__ArgsType;
     overrides?: NodeOverridesType<T>;
-    dataFetches?: PlasmicHomeCta__Fetches;
   } & Omit<PlasmicHomeCta__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
     Omit<PlasmicHomeCta__ArgsType, ReservedPropsType> &
@@ -216,13 +231,10 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       internalVariantPropNames: PlasmicHomeCta__VariantProps
     });
 
-    const { dataFetches } = props;
-
     return PlasmicHomeCta__RenderFunc({
       variants,
       args,
       overrides,
-      dataFetches,
       forNode: nodeName
     });
   };
@@ -239,7 +251,7 @@ export const PlasmicHomeCta = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    textbox: makeNodeComponent("textbox"),
+    textInput: makeNodeComponent("textInput"),
     linkButton: makeNodeComponent("linkButton"),
     svg: makeNodeComponent("svg"),
 

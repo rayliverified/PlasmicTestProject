@@ -16,6 +16,7 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 
 import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
 
 import {
   hasVariant,
@@ -35,9 +36,10 @@ import {
 } from "@plasmicapp/react-web";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
-import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
-import * as projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
-import * as sty from "./PlasmicSection.module.css"; // plasmic-import: YmEkrS8oLm8/css
+
+import plasmic_library_plasmic_color_type_css from "../library_plasmic_color_type/plasmic_library_plasmic_color_type.module.css"; // plasmic-import: seaQhLVS4bbjiGvJJrRwyL/projectcss
+import projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
+import sty from "./PlasmicSection.module.css"; // plasmic-import: YmEkrS8oLm8/css
 
 export type PlasmicSection__VariantMembers = {};
 
@@ -70,10 +72,11 @@ function PlasmicSection__RenderFunc(props: {
   variants: PlasmicSection__VariantsArgs;
   args: PlasmicSection__ArgsType;
   overrides: PlasmicSection__OverridesType;
-  dataFetches?: PlasmicSection__Fetches;
+
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode, dataFetches } = props;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   return (
     <p.Stack
@@ -83,7 +86,15 @@ function PlasmicSection__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       hasGap={true}
-      className={classNames(defaultcss.all, projectcss.root_reset, sty.root)}
+      className={classNames(
+        projectcss.all,
+        projectcss.root_reset,
+        projectcss.plasmic_default_styles,
+        projectcss.plasmic_mixins,
+        projectcss.plasmic_tokens,
+        plasmic_library_plasmic_color_type_css.plasmic_tokens,
+        sty.root
+      )}
     >
       {p.renderPlasmicSlot({
         defaultContents: "Trusted by over 20,000 companies all over the world",
@@ -122,7 +133,6 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicSection__VariantsArgs;
     args?: PlasmicSection__ArgsType;
     overrides?: NodeOverridesType<T>;
-    dataFetches?: PlasmicSection__Fetches;
   } & Omit<PlasmicSection__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
     Omit<PlasmicSection__ArgsType, ReservedPropsType> &
@@ -149,13 +159,10 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       internalVariantPropNames: PlasmicSection__VariantProps
     });
 
-    const { dataFetches } = props;
-
     return PlasmicSection__RenderFunc({
       variants,
       args,
       overrides,
-      dataFetches,
       forNode: nodeName
     });
   };

@@ -16,6 +16,7 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 
 import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
 
 import {
   hasVariant,
@@ -36,9 +37,10 @@ import {
 import BaseCard from "../../BaseCard"; // plasmic-import: DlcJ2nDkANPd/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
-import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
-import * as projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
-import * as sty from "./PlasmicFaq.module.css"; // plasmic-import: 0wrj4H0ys-px/css
+
+import plasmic_library_plasmic_color_type_css from "../library_plasmic_color_type/plasmic_library_plasmic_color_type.module.css"; // plasmic-import: seaQhLVS4bbjiGvJJrRwyL/projectcss
+import projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
+import sty from "./PlasmicFaq.module.css"; // plasmic-import: 0wrj4H0ys-px/css
 
 export type PlasmicFaq__VariantMembers = {};
 
@@ -68,10 +70,11 @@ function PlasmicFaq__RenderFunc(props: {
   variants: PlasmicFaq__VariantsArgs;
   args: PlasmicFaq__ArgsType;
   overrides: PlasmicFaq__OverridesType;
-  dataFetches?: PlasmicFaq__Fetches;
+
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode, dataFetches } = props;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   return (
     <BaseCard
@@ -84,10 +87,10 @@ function PlasmicFaq__RenderFunc(props: {
       <p.Stack
         as={"div"}
         hasGap={true}
-        className={classNames(defaultcss.all, sty.freeBox__nbSwn)}
+        className={classNames(projectcss.all, sty.freeBox__nbSwn)}
       >
-        <div className={classNames(defaultcss.all, sty.freeBox__bRuW7)}>
-          <div className={classNames(defaultcss.all, sty.freeBox__v5AXf)}>
+        <div className={classNames(projectcss.all, sty.freeBox__bRuW7)}>
+          <div className={classNames(projectcss.all, sty.freeBox__v5AXf)}>
             {p.renderPlasmicSlot({
               defaultContents: "Are there long-term contracts?",
               value: args.children,
@@ -128,7 +131,6 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicFaq__VariantsArgs;
     args?: PlasmicFaq__ArgsType;
     overrides?: NodeOverridesType<T>;
-    dataFetches?: PlasmicFaq__Fetches;
   } & Omit<PlasmicFaq__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
     Omit<PlasmicFaq__ArgsType, ReservedPropsType> &
@@ -155,13 +157,10 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       internalVariantPropNames: PlasmicFaq__VariantProps
     });
 
-    const { dataFetches } = props;
-
     return PlasmicFaq__RenderFunc({
       variants,
       args,
       overrides,
-      dataFetches,
       forNode: nodeName
     });
   };

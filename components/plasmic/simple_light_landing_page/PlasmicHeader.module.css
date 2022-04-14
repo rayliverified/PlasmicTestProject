@@ -22,15 +22,15 @@
   flex-shrink: 0;
 }
 .freeBox {
-  display: inline-flex;
-  position: relative;
   flex-direction: row;
+  display: flex;
+  position: relative;
   width: auto;
 }
 .freeBox > :global(.__wab_flex-container) {
   flex-direction: row;
-  align-items: center;
   justify-content: flex-start;
+  align-items: center;
   margin-left: calc(0px - 20px);
   width: calc(100% + 20px);
 }

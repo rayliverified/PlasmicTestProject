@@ -16,6 +16,7 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 
 import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
 
 import {
   hasVariant,
@@ -36,9 +37,10 @@ import {
 import Avatar from "../../Avatar"; // plasmic-import: w6naBfCt2sqX/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
-import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
-import * as projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
-import * as sty from "./PlasmicTestimonial.module.css"; // plasmic-import: ypmftvh6VAti/css
+
+import plasmic_library_plasmic_color_type_css from "../library_plasmic_color_type/plasmic_library_plasmic_color_type.module.css"; // plasmic-import: seaQhLVS4bbjiGvJJrRwyL/projectcss
+import projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
+import sty from "./PlasmicTestimonial.module.css"; // plasmic-import: ypmftvh6VAti/css
 
 import QuoteDashesIcon from "./icons/PlasmicIcon__QuoteDashes"; // plasmic-import: jrsV9HnpSWzW/icon
 
@@ -67,10 +69,11 @@ function PlasmicTestimonial__RenderFunc(props: {
   variants: PlasmicTestimonial__VariantsArgs;
   args: PlasmicTestimonial__ArgsType;
   overrides: PlasmicTestimonial__OverridesType;
-  dataFetches?: PlasmicTestimonial__Fetches;
+
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode, dataFetches } = props;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   return (
     <div
@@ -78,7 +81,15 @@ function PlasmicTestimonial__RenderFunc(props: {
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      className={classNames(defaultcss.all, projectcss.root_reset, sty.root)}
+      className={classNames(
+        projectcss.all,
+        projectcss.root_reset,
+        projectcss.plasmic_default_styles,
+        projectcss.plasmic_mixins,
+        projectcss.plasmic_tokens,
+        plasmic_library_plasmic_color_type_css.plasmic_tokens,
+        sty.root
+      )}
     >
       <Avatar
         data-plasmic-name={"avatar"}
@@ -89,7 +100,7 @@ function PlasmicTestimonial__RenderFunc(props: {
             data-plasmic-name={"img"}
             data-plasmic-override={overrides.img}
             alt={""}
-            className={classNames(defaultcss.img, sty.img)}
+            className={classNames(projectcss.all, projectcss.img, sty.img)}
             src={"/plasmic/simple_light_landing_page/images/profilepic.png"}
           />
         }
@@ -98,19 +109,19 @@ function PlasmicTestimonial__RenderFunc(props: {
       <QuoteDashesIcon
         data-plasmic-name={"svg"}
         data-plasmic-override={overrides.svg}
-        className={classNames(defaultcss.all, sty.svg)}
+        className={classNames(projectcss.all, sty.svg)}
         role={"img"}
       />
 
       <p.Stack
         as={"div"}
         hasGap={true}
-        className={classNames(defaultcss.all, sty.freeBox__c522W)}
+        className={classNames(projectcss.all, sty.freeBox__c522W)}
       >
         <div
           className={classNames(
-            defaultcss.all,
-            defaultcss.__wab_text,
+            projectcss.all,
+            projectcss.__wab_text,
             sty.text__jIyDf
           )}
         >
@@ -122,12 +133,12 @@ function PlasmicTestimonial__RenderFunc(props: {
         <p.Stack
           as={"div"}
           hasGap={true}
-          className={classNames(defaultcss.all, sty.freeBox__v4P4E)}
+          className={classNames(projectcss.all, sty.freeBox__v4P4E)}
         >
           <div
             className={classNames(
-              defaultcss.all,
-              defaultcss.__wab_text,
+              projectcss.all,
+              projectcss.__wab_text,
               sty.text__eHy0G
             )}
           >
@@ -136,8 +147,8 @@ function PlasmicTestimonial__RenderFunc(props: {
 
           <div
             className={classNames(
-              defaultcss.all,
-              defaultcss.__wab_text,
+              projectcss.all,
+              projectcss.__wab_text,
               sty.text__e1Gpl
             )}
           >
@@ -176,7 +187,6 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicTestimonial__VariantsArgs;
     args?: PlasmicTestimonial__ArgsType;
     overrides?: NodeOverridesType<T>;
-    dataFetches?: PlasmicTestimonial__Fetches;
   } & Omit<PlasmicTestimonial__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
     Omit<PlasmicTestimonial__ArgsType, ReservedPropsType> &
@@ -203,13 +213,10 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       internalVariantPropNames: PlasmicTestimonial__VariantProps
     });
 
-    const { dataFetches } = props;
-
     return PlasmicTestimonial__RenderFunc({
       variants,
       args,
       overrides,
-      dataFetches,
       forNode: nodeName
     });
   };

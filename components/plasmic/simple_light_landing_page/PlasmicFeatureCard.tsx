@@ -16,6 +16,7 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 
 import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
 
 import {
   hasVariant,
@@ -35,9 +36,10 @@ import {
 } from "@plasmicapp/react-web";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
-import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
-import * as projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
-import * as sty from "./PlasmicFeatureCard.module.css"; // plasmic-import: Vqls-WO8FjU/css
+
+import plasmic_library_plasmic_color_type_css from "../library_plasmic_color_type/plasmic_library_plasmic_color_type.module.css"; // plasmic-import: seaQhLVS4bbjiGvJJrRwyL/projectcss
+import projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
+import sty from "./PlasmicFeatureCard.module.css"; // plasmic-import: Vqls-WO8FjU/css
 
 export type PlasmicFeatureCard__VariantMembers = {
   long: "long";
@@ -84,10 +86,11 @@ function PlasmicFeatureCard__RenderFunc(props: {
   variants: PlasmicFeatureCard__VariantsArgs;
   args: PlasmicFeatureCard__ArgsType;
   overrides: PlasmicFeatureCard__OverridesType;
-  dataFetches?: PlasmicFeatureCard__Fetches;
+
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode, dataFetches } = props;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   return (
     <p.Stack
@@ -97,23 +100,26 @@ function PlasmicFeatureCard__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       hasGap={true}
-      className={classNames(defaultcss.all, projectcss.root_reset, sty.root, {
-        [sty.root__long]: hasVariant(variants, "long", "long")
-      })}
+      className={classNames(
+        projectcss.all,
+        projectcss.root_reset,
+        projectcss.plasmic_default_styles,
+        projectcss.plasmic_mixins,
+        projectcss.plasmic_tokens,
+        plasmic_library_plasmic_color_type_css.plasmic_tokens,
+        sty.root,
+        { [sty.rootlong]: hasVariant(variants, "long", "long") }
+      )}
     >
       {(hasVariant(variants, "long", "long") ? false : true) ? (
         <div
-          className={classNames(defaultcss.all, sty.freeBox___4Lqbc, {
-            [sty.freeBox__long___4Lqbc5Vyfg]: hasVariant(
-              variants,
-              "long",
-              "long"
-            )
+          className={classNames(projectcss.all, sty.freeBox___4Lqbc, {
+            [sty.freeBoxlong___4Lqbc5Vyfg]: hasVariant(variants, "long", "long")
           })}
         >
           <div
-            className={classNames(defaultcss.all, sty.freeBox__yfkfp, {
-              [sty.freeBox__long__yfkfp5Vyfg]: hasVariant(
+            className={classNames(projectcss.all, sty.freeBox__yfkfp, {
+              [sty.freeBoxlong__yfkfp5Vyfg]: hasVariant(
                 variants,
                 "long",
                 "long"
@@ -123,7 +129,7 @@ function PlasmicFeatureCard__RenderFunc(props: {
             {p.renderPlasmicSlot({
               defaultContents: (
                 <svg
-                  className={classNames(defaultcss.all, sty.svg__l1HbO)}
+                  className={classNames(projectcss.all, sty.svg__l1HbO)}
                   role={"img"}
                 />
               ),
@@ -137,15 +143,15 @@ function PlasmicFeatureCard__RenderFunc(props: {
       <p.Stack
         as={"div"}
         hasGap={true}
-        className={classNames(defaultcss.all, sty.freeBox__fK4Vw, {
-          [sty.freeBox__long__fK4Vw5Vyfg]: hasVariant(variants, "long", "long")
+        className={classNames(projectcss.all, sty.freeBox__fK4Vw, {
+          [sty.freeBoxlong__fK4Vw5Vyfg]: hasVariant(variants, "long", "long")
         })}
       >
         {p.renderPlasmicSlot({
           defaultContents: "Title",
           value: args.title,
           className: classNames(sty.slotTargetTitle, {
-            [sty.slotTargetTitle__long]: hasVariant(variants, "long", "long")
+            [sty.slotTargetTitlelong]: hasVariant(variants, "long", "long")
           })
         })}
 
@@ -154,7 +160,7 @@ function PlasmicFeatureCard__RenderFunc(props: {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           value: args.description,
           className: classNames(sty.slotTargetDescription, {
-            [sty.slotTargetDescription__long]: hasVariant(
+            [sty.slotTargetDescriptionlong]: hasVariant(
               variants,
               "long",
               "long"
@@ -165,18 +171,14 @@ function PlasmicFeatureCard__RenderFunc(props: {
 
       {(hasVariant(variants, "long", "long") ? true : false) ? (
         <div
-          className={classNames(defaultcss.all, sty.freeBox__rmW5U, {
-            [sty.freeBox__long__rmW5U5Vyfg]: hasVariant(
-              variants,
-              "long",
-              "long"
-            )
+          className={classNames(projectcss.all, sty.freeBox__rmW5U, {
+            [sty.freeBoxlong__rmW5U5Vyfg]: hasVariant(variants, "long", "long")
           })}
         >
           {p.renderPlasmicSlot({
             defaultContents: (
               <svg
-                className={classNames(defaultcss.all, sty.svg__e9JMj)}
+                className={classNames(projectcss.all, sty.svg__e9JMj)}
                 role={"img"}
               />
             ),
@@ -210,7 +212,6 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicFeatureCard__VariantsArgs;
     args?: PlasmicFeatureCard__ArgsType;
     overrides?: NodeOverridesType<T>;
-    dataFetches?: PlasmicFeatureCard__Fetches;
   } & Omit<PlasmicFeatureCard__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
     Omit<PlasmicFeatureCard__ArgsType, ReservedPropsType> &
@@ -237,13 +238,10 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       internalVariantPropNames: PlasmicFeatureCard__VariantProps
     });
 
-    const { dataFetches } = props;
-
     return PlasmicFeatureCard__RenderFunc({
       variants,
       args,
       overrides,
-      dataFetches,
       forNode: nodeName
     });
   };

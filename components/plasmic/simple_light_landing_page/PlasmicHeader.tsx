@@ -16,6 +16,7 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 
 import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
 
 import {
   hasVariant,
@@ -35,12 +36,13 @@ import {
 } from "@plasmicapp/react-web";
 import LinkButton from "../../LinkButton"; // plasmic-import: YlXOHfol-N9v/component
 
-import { useScreenVariants } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: wMElkBnuSBnk/globalVariant
+import { useScreenVariants as useScreenVariantswMElkBnuSBnk } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: wMElkBnuSBnk/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
-import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
-import * as projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
-import * as sty from "./PlasmicHeader.module.css"; // plasmic-import: 1hDB2iF1uu9/css
+
+import plasmic_library_plasmic_color_type_css from "../library_plasmic_color_type/plasmic_library_plasmic_color_type.module.css"; // plasmic-import: seaQhLVS4bbjiGvJJrRwyL/projectcss
+import projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
+import sty from "./PlasmicHeader.module.css"; // plasmic-import: 1hDB2iF1uu9/css
 
 import LogoIcon from "./icons/PlasmicIcon__Logo"; // plasmic-import: 5YoX-nw4Uw8R/icon
 
@@ -69,13 +71,14 @@ function PlasmicHeader__RenderFunc(props: {
   variants: PlasmicHeader__VariantsArgs;
   args: PlasmicHeader__ArgsType;
   overrides: PlasmicHeader__OverridesType;
-  dataFetches?: PlasmicHeader__Fetches;
+
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode, dataFetches } = props;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariants()
+    screen: useScreenVariantswMElkBnuSBnk()
   });
 
   return (
@@ -84,12 +87,20 @@ function PlasmicHeader__RenderFunc(props: {
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      className={classNames(defaultcss.all, projectcss.root_reset, sty.root)}
+      className={classNames(
+        projectcss.all,
+        projectcss.root_reset,
+        projectcss.plasmic_default_styles,
+        projectcss.plasmic_mixins,
+        projectcss.plasmic_tokens,
+        plasmic_library_plasmic_color_type_css.plasmic_tokens,
+        sty.root
+      )}
     >
       <p.PlasmicLink
         data-plasmic-name={"link"}
         data-plasmic-override={overrides.link}
-        className={classNames(defaultcss.a, sty.link)}
+        className={classNames(projectcss.all, projectcss.a, sty.link)}
         component={Link}
         href={"/" as const}
         platform={"nextjs"}
@@ -97,7 +108,7 @@ function PlasmicHeader__RenderFunc(props: {
         <LogoIcon
           data-plasmic-name={"svg"}
           data-plasmic-override={overrides.svg}
-          className={classNames(defaultcss.all, sty.svg)}
+          className={classNames(projectcss.all, sty.svg)}
           role={"img"}
         />
       </p.PlasmicLink>
@@ -107,7 +118,7 @@ function PlasmicHeader__RenderFunc(props: {
         data-plasmic-name={"freeBox"}
         data-plasmic-override={overrides.freeBox}
         hasGap={true}
-        className={classNames(defaultcss.all, sty.freeBox)}
+        className={classNames(projectcss.all, sty.freeBox)}
       >
         <LinkButton
           className={classNames("__wab_instance", sty.linkButton___7Rnqs)}
@@ -132,7 +143,7 @@ function PlasmicHeader__RenderFunc(props: {
         {(hasVariant(globalVariants, "screen", "mobile") ? false : true) ? (
           <LinkButton
             className={classNames("__wab_instance", sty.linkButton__nKnFj)}
-            narrower={"narrower" as const}
+            narrower={true}
             text={"Sign up ->"}
             type={"solidBlack" as const}
           />
@@ -169,7 +180,6 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicHeader__VariantsArgs;
     args?: PlasmicHeader__ArgsType;
     overrides?: NodeOverridesType<T>;
-    dataFetches?: PlasmicHeader__Fetches;
   } & Omit<PlasmicHeader__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
     Omit<PlasmicHeader__ArgsType, ReservedPropsType> &
@@ -196,13 +206,10 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       internalVariantPropNames: PlasmicHeader__VariantProps
     });
 
-    const { dataFetches } = props;
-
     return PlasmicHeader__RenderFunc({
       variants,
       args,
       overrides,
-      dataFetches,
       forNode: nodeName
     });
   };

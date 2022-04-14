@@ -16,6 +16,7 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 
 import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
 
 import {
   hasVariant,
@@ -38,9 +39,10 @@ import Bullet from "../../Bullet"; // plasmic-import: 9gqZVw2Lbl70/component
 import LinkButton from "../../LinkButton"; // plasmic-import: YlXOHfol-N9v/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
-import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
-import * as projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
-import * as sty from "./PlasmicPlan.module.css"; // plasmic-import: HDxfYSYlMRl3/css
+
+import plasmic_library_plasmic_color_type_css from "../library_plasmic_color_type/plasmic_library_plasmic_color_type.module.css"; // plasmic-import: seaQhLVS4bbjiGvJJrRwyL/projectcss
+import projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
+import sty from "./PlasmicPlan.module.css"; // plasmic-import: HDxfYSYlMRl3/css
 
 export type PlasmicPlan__VariantMembers = {};
 
@@ -79,10 +81,11 @@ function PlasmicPlan__RenderFunc(props: {
   variants: PlasmicPlan__VariantsArgs;
   args: PlasmicPlan__ArgsType;
   overrides: PlasmicPlan__OverridesType;
-  dataFetches?: PlasmicPlan__Fetches;
+
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode, dataFetches } = props;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   return (
     <BaseCard
@@ -92,11 +95,11 @@ function PlasmicPlan__RenderFunc(props: {
       data-plasmic-for-node={forNode}
       className={classNames("__wab_instance", sty.root)}
     >
-      <div className={classNames(defaultcss.all, sty.freeBox__txkc3)}>
+      <div className={classNames(projectcss.all, sty.freeBox__txkc3)}>
         <p.Stack
           as={"div"}
           hasGap={true}
-          className={classNames(defaultcss.all, sty.freeBox__dX80A)}
+          className={classNames(projectcss.all, sty.freeBox__dX80A)}
         >
           {p.renderPlasmicSlot({
             defaultContents: "Basic",
@@ -108,8 +111,8 @@ function PlasmicPlan__RenderFunc(props: {
             defaultContents: (
               <div
                 className={classNames(
-                  defaultcss.all,
-                  defaultcss.__wab_text,
+                  projectcss.all,
+                  projectcss.__wab_text,
                   sty.text__qp8Xm
                 )}
               >
@@ -125,7 +128,7 @@ function PlasmicPlan__RenderFunc(props: {
               <p.Stack
                 as={"div"}
                 hasGap={true}
-                className={classNames(defaultcss.all, sty.freeBox__wtTRm)}
+                className={classNames(projectcss.all, sty.freeBox__wtTRm)}
               >
                 <Bullet
                   className={classNames("__wab_instance", sty.bullet__wdSZk)}
@@ -144,7 +147,7 @@ function PlasmicPlan__RenderFunc(props: {
             value: args.description
           })}
 
-          <div className={classNames(defaultcss.all, sty.freeBox__oa3BW)}>
+          <div className={classNames(projectcss.all, sty.freeBox__oa3BW)}>
             {p.renderPlasmicSlot({
               defaultContents: (
                 <LinkButton
@@ -183,7 +186,6 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicPlan__VariantsArgs;
     args?: PlasmicPlan__ArgsType;
     overrides?: NodeOverridesType<T>;
-    dataFetches?: PlasmicPlan__Fetches;
   } & Omit<PlasmicPlan__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
     Omit<PlasmicPlan__ArgsType, ReservedPropsType> &
@@ -210,13 +212,10 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       internalVariantPropNames: PlasmicPlan__VariantProps
     });
 
-    const { dataFetches } = props;
-
     return PlasmicPlan__RenderFunc({
       variants,
       args,
       overrides,
-      dataFetches,
       forNode: nodeName
     });
   };

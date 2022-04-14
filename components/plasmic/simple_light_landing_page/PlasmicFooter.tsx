@@ -16,6 +16,7 @@ import Head from "next/head";
 import Link, { LinkProps } from "next/link";
 
 import * as p from "@plasmicapp/react-web";
+import * as ph from "@plasmicapp/host";
 
 import {
   hasVariant,
@@ -35,12 +36,13 @@ import {
 } from "@plasmicapp/react-web";
 import IconLink from "../../IconLink"; // plasmic-import: J30t4sgv6Td/component
 
-import { useScreenVariants } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: wMElkBnuSBnk/globalVariant
+import { useScreenVariants as useScreenVariantswMElkBnuSBnk } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: wMElkBnuSBnk/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
-import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
-import * as projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
-import * as sty from "./PlasmicFooter.module.css"; // plasmic-import: BFEvheJ68r2/css
+
+import plasmic_library_plasmic_color_type_css from "../library_plasmic_color_type/plasmic_library_plasmic_color_type.module.css"; // plasmic-import: seaQhLVS4bbjiGvJJrRwyL/projectcss
+import projectcss from "./plasmic_simple_light_landing_page.module.css"; // plasmic-import: pe9Zx7A91nx77QMfLiKwD/projectcss
+import sty from "./PlasmicFooter.module.css"; // plasmic-import: BFEvheJ68r2/css
 
 import LogoIcon from "./icons/PlasmicIcon__Logo"; // plasmic-import: 5YoX-nw4Uw8R/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: oI2IzSaOg-a3/icon
@@ -60,8 +62,9 @@ export const PlasmicFooter__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicFooter__OverridesType = {
   root?: p.Flex<"div">;
-  textbox?: p.Flex<"input">;
+  textInput?: p.Flex<"input">;
   button?: p.Flex<"button">;
+  textbox?: p.Flex<"input">;
 };
 
 export interface DefaultFooterProps {
@@ -72,13 +75,14 @@ function PlasmicFooter__RenderFunc(props: {
   variants: PlasmicFooter__VariantsArgs;
   args: PlasmicFooter__ArgsType;
   overrides: PlasmicFooter__OverridesType;
-  dataFetches?: PlasmicFooter__Fetches;
+
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode, dataFetches } = props;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariants()
+    screen: useScreenVariantswMElkBnuSBnk()
   });
 
   return (
@@ -89,35 +93,44 @@ function PlasmicFooter__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       hasGap={true}
-      className={classNames(defaultcss.all, projectcss.root_reset, sty.root)}
+      className={classNames(
+        projectcss.all,
+        projectcss.root_reset,
+        projectcss.plasmic_default_styles,
+        projectcss.plasmic_mixins,
+        projectcss.plasmic_tokens,
+        plasmic_library_plasmic_color_type_css.plasmic_tokens,
+        sty.root
+      )}
     >
-      <div className={classNames(defaultcss.all, sty.freeBox__a1SV)} />
+      <div className={classNames(projectcss.all, sty.freeBox__a1SV)} />
 
       <p.Stack
         as={"div"}
         hasGap={true}
-        className={classNames(defaultcss.all, sty.freeBox__kAwns)}
+        className={classNames(projectcss.all, sty.freeBox__kAwns)}
       >
         <p.Stack
           as={"div"}
           hasGap={true}
-          className={classNames(defaultcss.all, sty.freeBox__eexRb)}
+          className={classNames(projectcss.all, sty.freeBox__eexRb)}
         >
           <IconLink
             className={classNames("__wab_instance", sty.iconLink__fUlRz)}
             icon={
               <LogoIcon
-                className={classNames(defaultcss.all, sty.svg__hYpCu)}
+                className={classNames(projectcss.all, sty.svg__hYpCu)}
                 role={"img"}
               />
             }
           />
 
-          <div className={classNames(defaultcss.all, sty.freeBox___8SwUk)}>
+          <div className={classNames(projectcss.all, sty.freeBox___8SwUk)}>
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link__bUkHu
               )}
               component={Link}
@@ -129,8 +142,8 @@ function PlasmicFooter__RenderFunc(props: {
 
             <div
               className={classNames(
-                defaultcss.all,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.__wab_text,
                 sty.text__fKDoW
               )}
             >
@@ -139,8 +152,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link__dhNor
               )}
               component={Link}
@@ -155,17 +169,17 @@ function PlasmicFooter__RenderFunc(props: {
         <p.Stack
           as={"div"}
           hasGap={true}
-          className={classNames(defaultcss.all, sty.freeBox___0NU6)}
+          className={classNames(projectcss.all, sty.freeBox___0NU6)}
         >
           <p.Stack
             as={"div"}
             hasGap={true}
-            className={classNames(defaultcss.all, sty.freeBox__lpogr)}
+            className={classNames(projectcss.all, sty.freeBox__lpogr)}
           >
             <div
               className={classNames(
-                defaultcss.all,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.__wab_text,
                 sty.text__rBqw8
               )}
             >
@@ -174,8 +188,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link___3PfdI
               )}
               component={Link}
@@ -187,8 +202,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link__fsq5V
               )}
               component={Link}
@@ -200,8 +216,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link__ix74N
               )}
               component={Link}
@@ -213,8 +230,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link___7LoLy
               )}
               component={Link}
@@ -226,8 +244,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link__iqRhT
               )}
               component={Link}
@@ -241,12 +260,12 @@ function PlasmicFooter__RenderFunc(props: {
           <p.Stack
             as={"div"}
             hasGap={true}
-            className={classNames(defaultcss.all, sty.freeBox__wUxHk)}
+            className={classNames(projectcss.all, sty.freeBox__wUxHk)}
           >
             <div
               className={classNames(
-                defaultcss.all,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.__wab_text,
                 sty.text__sp1Qy
               )}
             >
@@ -255,8 +274,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link__zXlVl
               )}
               component={Link}
@@ -268,8 +288,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link___7WD4F
               )}
               component={Link}
@@ -281,8 +302,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link__qd7V8
               )}
               component={Link}
@@ -294,8 +316,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link___4HUsY
               )}
               component={Link}
@@ -307,8 +330,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link__qWbGd
               )}
               component={Link}
@@ -322,12 +346,12 @@ function PlasmicFooter__RenderFunc(props: {
           <p.Stack
             as={"div"}
             hasGap={true}
-            className={classNames(defaultcss.all, sty.freeBox__egY4O)}
+            className={classNames(projectcss.all, sty.freeBox__egY4O)}
           >
             <div
               className={classNames(
-                defaultcss.all,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.__wab_text,
                 sty.text__ytRzC
               )}
             >
@@ -336,8 +360,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link__lbQt3
               )}
               component={Link}
@@ -349,8 +374,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link__ya9Y
               )}
               component={Link}
@@ -362,8 +388,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link__lXeZz
               )}
               component={Link}
@@ -375,8 +402,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link__sCbry
               )}
               component={Link}
@@ -388,8 +416,9 @@ function PlasmicFooter__RenderFunc(props: {
 
             <p.PlasmicLink
               className={classNames(
-                defaultcss.a,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.a,
+                projectcss.__wab_text,
                 sty.link__kmY1D
               )}
               component={Link}
@@ -403,12 +432,12 @@ function PlasmicFooter__RenderFunc(props: {
           <p.Stack
             as={"div"}
             hasGap={true}
-            className={classNames(defaultcss.all, sty.freeBox__wsPkm)}
+            className={classNames(projectcss.all, sty.freeBox__wsPkm)}
           >
             <div
               className={classNames(
-                defaultcss.all,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.__wab_text,
                 sty.text__dp3Ho
               )}
             >
@@ -417,34 +446,42 @@ function PlasmicFooter__RenderFunc(props: {
 
             <div
               className={classNames(
-                defaultcss.all,
-                defaultcss.__wab_text,
+                projectcss.all,
+                projectcss.__wab_text,
                 sty.text__gkGu
               )}
             >
               {"Get the latest news and articles to your inbox every month."}
             </div>
 
-            <div className={classNames(defaultcss.all, sty.freeBox__zwja7)}>
+            <div className={classNames(projectcss.all, sty.freeBox__zwja7)}>
               <input
-                data-plasmic-name={"textbox"}
-                data-plasmic-override={overrides.textbox}
-                className={classNames(defaultcss.input, sty.textbox)}
+                data-plasmic-name={"textInput"}
+                data-plasmic-override={overrides.textInput ?? overrides.textbox}
+                className={classNames(
+                  projectcss.all,
+                  projectcss.input,
+                  sty.textInput
+                )}
                 placeholder={"Your email" as const}
                 size={1 as const}
                 type={"text" as const}
                 value={"" as const}
               />
 
-              <div className={classNames(defaultcss.all, sty.freeBox__tzFg4)} />
+              <div className={classNames(projectcss.all, sty.freeBox__tzFg4)} />
 
               <button
                 data-plasmic-name={"button"}
                 data-plasmic-override={overrides.button}
-                className={classNames(defaultcss.button, sty.button)}
+                className={classNames(
+                  projectcss.all,
+                  projectcss.button,
+                  sty.button
+                )}
               >
                 <IconIcon
-                  className={classNames(defaultcss.all, sty.svg__nM5Zj)}
+                  className={classNames(projectcss.all, sty.svg__nM5Zj)}
                   role={"img"}
                 />
               </button>
@@ -453,18 +490,19 @@ function PlasmicFooter__RenderFunc(props: {
         </p.Stack>
       </p.Stack>
 
-      <div className={classNames(defaultcss.all, sty.freeBox__oTeiK)} />
+      <div className={classNames(projectcss.all, sty.freeBox__oTeiK)} />
 
       <p.Stack
         as={"div"}
         hasGap={true}
-        className={classNames(defaultcss.all, sty.freeBox__ohBRo)}
+        className={classNames(projectcss.all, sty.freeBox__ohBRo)}
       >
-        <div className={classNames(defaultcss.all, sty.freeBox__ktqOp)}>
+        <div className={classNames(projectcss.all, sty.freeBox__ktqOp)}>
           <p.PlasmicLink
             className={classNames(
-              defaultcss.a,
-              defaultcss.__wab_text,
+              projectcss.all,
+              projectcss.a,
+              projectcss.__wab_text,
               sty.link__yuVn
             )}
             component={Link}
@@ -476,8 +514,9 @@ function PlasmicFooter__RenderFunc(props: {
 
           <p.PlasmicLink
             className={classNames(
-              defaultcss.a,
-              defaultcss.__wab_text,
+              projectcss.all,
+              projectcss.a,
+              projectcss.__wab_text,
               sty.link__vxz0V
             )}
             component={Link}
@@ -489,8 +528,8 @@ function PlasmicFooter__RenderFunc(props: {
 
           <div
             className={classNames(
-              defaultcss.all,
-              defaultcss.__wab_text,
+              projectcss.all,
+              projectcss.__wab_text,
               sty.text__xiPl1
             )}
           >
@@ -501,13 +540,13 @@ function PlasmicFooter__RenderFunc(props: {
         <p.Stack
           as={"div"}
           hasGap={true}
-          className={classNames(defaultcss.all, sty.freeBox__wKiRk)}
+          className={classNames(projectcss.all, sty.freeBox__wKiRk)}
         >
           <IconLink
             className={classNames("__wab_instance", sty.iconLink___3RQaQ)}
             icon={
               <TwitterIconIcon
-                className={classNames(defaultcss.all, sty.svg__cfl2U)}
+                className={classNames(projectcss.all, sty.svg__cfl2U)}
                 role={"img"}
               />
             }
@@ -517,7 +556,7 @@ function PlasmicFooter__RenderFunc(props: {
             className={classNames("__wab_instance", sty.iconLink___5Wp6E)}
             icon={
               <GithubIconIcon
-                className={classNames(defaultcss.all, sty.svg__sqX2)}
+                className={classNames(projectcss.all, sty.svg__sqX2)}
                 role={"img"}
               />
             }
@@ -527,7 +566,7 @@ function PlasmicFooter__RenderFunc(props: {
             className={classNames("__wab_instance", sty.iconLink__gCn2C)}
             icon={
               <FacebookIconIcon
-                className={classNames(defaultcss.all, sty.svg__v3ADe)}
+                className={classNames(projectcss.all, sty.svg__v3ADe)}
                 role={"img"}
               />
             }
@@ -539,8 +578,8 @@ function PlasmicFooter__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "textbox", "button"],
-  textbox: ["textbox"],
+  root: ["root", "textInput", "textbox", "button"],
+  textInput: ["textInput", "textbox"],
   button: ["button"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -548,7 +587,7 @@ type DescendantsType<T extends NodeNameType> =
   typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  textbox: "input";
+  textInput: "input";
   button: "button";
 };
 
@@ -563,7 +602,6 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicFooter__VariantsArgs;
     args?: PlasmicFooter__ArgsType;
     overrides?: NodeOverridesType<T>;
-    dataFetches?: PlasmicFooter__Fetches;
   } & Omit<PlasmicFooter__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
     Omit<PlasmicFooter__ArgsType, ReservedPropsType> &
@@ -590,13 +628,10 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       internalVariantPropNames: PlasmicFooter__VariantProps
     });
 
-    const { dataFetches } = props;
-
     return PlasmicFooter__RenderFunc({
       variants,
       args,
       overrides,
-      dataFetches,
       forNode: nodeName
     });
   };
@@ -613,7 +648,7 @@ export const PlasmicFooter = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    textbox: makeNodeComponent("textbox"),
+    textInput: makeNodeComponent("textInput"),
     button: makeNodeComponent("button"),
 
     // Metadata about props expected for PlasmicFooter

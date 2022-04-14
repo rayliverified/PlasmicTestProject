@@ -1,10 +1,10 @@
 .root {
+  flex-direction: column;
   max-width: 768px;
   display: flex;
   width: 100%;
   height: auto;
   position: relative;
-  flex-direction: column;
   min-width: 0;
 }
 .root > :global(.__wab_flex-container) {
@@ -25,7 +25,7 @@
   font-size: 42px;
   font-weight: 800;
   text-align: center;
-  color: rgb(5, 5, 5) /* plasmic-token: NEon4Y--Z */;
+  color: var(--token-NEon4Y--Z);
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .slotTargetTitle {
